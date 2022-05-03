@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import './components/ChartComponent'
-import ChartComponent from "./components/ChartComponent";
+import UpdatingChart from "./components/charts/updatingData/UpdatingChartComponent";
 window.addEventListener('DOMContentLoaded', (event) => {
 //Your JS code.
 });
@@ -10,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-          <ChartComponent />
+          <UpdatingChart />
         {/*<img src={logo} className="App-logo" alt="logo" />*/}
         {/*<p>*/}
         {/*  Edit <code>src/App.js</code> and save to reload.*/}

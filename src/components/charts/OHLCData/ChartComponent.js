@@ -7,10 +7,7 @@ import {TypeChooser} from "react-stockcharts/lib/helper";
 import io from "socket.io-client";
 import {timeParse} from "d3-time-format";
 
-
-
 class ChartComponent extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
