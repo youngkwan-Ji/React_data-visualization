@@ -8,10 +8,10 @@ export function getSampleKlineData() {
     for(var i =0; i<sampleSize; i++) {
         var tmp = {}
         tmp.date = new Date();
-        tmp.open = 0;
-        tmp.high = 0;
-        tmp.low = 0;
-        tmp.close = 0;
+        tmp.open = 38000;
+        tmp.high = 38000;
+        tmp.low = 38000;
+        tmp.close = 38000;
         tmp.volume = 0;
         sampleArr.push(tmp)
     }
@@ -20,12 +20,13 @@ export function getSampleKlineData() {
 
 export function parseKlineData(d) {
     var res= {}
-    res.date = new Date(d.E);
+    res.date = new Date(d.k.t);
     res.open = d.k.o;
     res.high = d.k.h;
     res.low = d.k.l;
     res.close = d.k.c;
     res.volume = d.k.v;
+    res.last = d.k.x;
     return res
 }
 

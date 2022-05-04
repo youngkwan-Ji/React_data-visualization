@@ -61,6 +61,11 @@ export default function updatingDataWrapper(ChartComponent) {
                                 length: this.state.length + 1,
                                 data: this.props.data.slice(0, this.state.length + 1),
                             });
+                        }else{
+                            this.setState({
+                                length: this.state.length,
+                                data: this.props.data.slice(0, this.state.length),
+                            });
                         }
                     };
                     break;

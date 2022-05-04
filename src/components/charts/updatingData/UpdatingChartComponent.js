@@ -32,12 +32,20 @@ class ChartComponent extends React.Component {
         socketClient.on("wsKline", req => {
             var jsonStr = String(req.data)
             var data = parseKlineData(JSON.parse(jsonStr))
-            // console.log(data)
-            this.setState({
-                data: [...this.state.data, data]
-            },function (){
-                console.log(this.state)
-            });
+
+            if (data.date.getTime() == this.state.data[this.state.data.length - 1].date.getTime()){
+                this.setState({
+                    data: [...this.state.data.slice(0,-1), data]
+                },function (){
+                    console.log(this.state)
+                });
+            }else{
+                this.setState({
+                    data: [...this.state.data, data]
+                },function (){
+                    console.log(this.state)
+                });
+            }
         });
     }
 

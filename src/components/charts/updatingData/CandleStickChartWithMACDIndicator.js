@@ -94,8 +94,8 @@ class CandleStickChartWithMACDIndicator extends React.Component {
         } = xScaleProvider(calculatedData);
 
         return (
-            <ChartCanvas height={600}
-                         width={1500}
+            <ChartCanvas height={800}
+                         width={1000}
                          ratio={ratio}
                          margin={{ left: 70, right: 70, top: 20, bottom: 30 }}
                          type={type}
