@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import Chart from './UpdatingChart';
-import {parseKlineData,getSampleKlineData} from "../../chartUtils"
+import {parseKlineData, getSampleKlineData, parsePredictKlineData} from "../../chartUtils"
 
 import {TypeChooser} from "react-stockcharts/lib/helper";
 import io from "socket.io-client";
@@ -14,7 +14,8 @@ class ChartComponent extends React.Component {
 
         var sample = getSampleKlineData()
         this.state = {
-            data: sample
+            data: sample,
+            predictData: sample
         }
         // console.log(a)
         this.initSocket()
@@ -47,6 +48,26 @@ class ChartComponent extends React.Component {
                 });
             }
         });
+
+        socketClient.on("predictWsKline", req => {
+            var tmp = JSON.parse(req.data)
+            console.log()
+            var data = parsePredictKlineData(JSON.parse(tmp[0]))
+
+            if (data.date.getTime() == this.state.predictData[this.state.predictData.length - 1].date.getTime()){
+                this.setState({
+                    predictData: [...this.state.predictData.slice(0,-1), data]
+                },function (){
+                    console.log(this.state)
+                });
+            }else{
+                this.setState({
+                    predictData: [...this.state.predictData, data]
+                },function (){
+                    console.log(this.state)
+                });
+            }
+        });
     }
 
 
@@ -64,6 +85,7 @@ class ChartComponent extends React.Component {
             // <TypeChooser>
                 <div>
                 <Chart type={"hybrid"} data={this.state.data}/>
+                    <Chart type={"hybrid"} data={this.state.predictData}/>
                     {/*{type => <Chart type={type} data={this.state.data}/>}*/}
                 </div>
             //</TypeChooser>

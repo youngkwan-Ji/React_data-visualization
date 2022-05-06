@@ -172,36 +172,36 @@ class CandleStickChartWithMACDIndicator extends React.Component {
                     <BarSeries yAccessor={d => d.volume} fill={d => d.close > d.open ? "#6BA583" : "#FF0000"} />
                     <AreaSeries yAccessor={smaVolume50.accessor()} stroke={smaVolume50.stroke()} fill={smaVolume50.fill()}/>
                 </Chart>
-                <Chart id={3} height={150}
-                       yExtents={macdCalculator.accessor()}
-                       origin={(w, h) => [0, h - 150]} padding={{ top: 10, bottom: 10 }}
-                >
-                    <XAxis axisAt="bottom" orient="bottom"/>
-                    <YAxis axisAt="right" orient="right" ticks={2} />
+                {/*<Chart id={3} height={150}*/}
+                {/*       yExtents={macdCalculator.accessor()}*/}
+                {/*       origin={(w, h) => [0, h - 150]} padding={{ top: 10, bottom: 10 }}*/}
+                {/*>*/}
+                {/*    <XAxis axisAt="bottom" orient="bottom"/>*/}
+                {/*    <YAxis axisAt="right" orient="right" ticks={2} />*/}
 
-                    <MouseCoordinateX
-                        at="bottom"
-                        orient="bottom"
-                        displayFormat={timeFormat("%Y-%m-%d %H:%M:%S")}
-                        rectRadius={5}
-                        {...mouseEdgeAppearance}
-                    />
-                    <MouseCoordinateY
-                        at="right"
-                        orient="right"
-                        displayFormat={format(".2f")}
-                        {...mouseEdgeAppearance}
-                    />
+                {/*    <MouseCoordinateX*/}
+                {/*        at="bottom"*/}
+                {/*        orient="bottom"*/}
+                {/*        displayFormat={timeFormat("%Y-%m-%d %H:%M:%S")}*/}
+                {/*        rectRadius={5}*/}
+                {/*        {...mouseEdgeAppearance}*/}
+                {/*    />*/}
+                {/*    <MouseCoordinateY*/}
+                {/*        at="right"*/}
+                {/*        orient="right"*/}
+                {/*        displayFormat={format(".2f")}*/}
+                {/*        {...mouseEdgeAppearance}*/}
+                {/*    />*/}
 
-                    <MACDSeries yAccessor={d => d.macd}
-                                {...macdAppearance} />
-                    <MACDTooltip
-                        origin={[-38, 15]}
-                        yAccessor={d => d.macd}
-                        options={macdCalculator.options()}
-                        appearance={macdAppearance}
-                    />
-                </Chart>
+                {/*    <MACDSeries yAccessor={d => d.macd}*/}
+                {/*                {...macdAppearance} />*/}
+                {/*    <MACDTooltip*/}
+                {/*        origin={[-38, 15]}*/}
+                {/*        yAccessor={d => d.macd}*/}
+                {/*        options={macdCalculator.options()}*/}
+                {/*        appearance={macdAppearance}*/}
+                {/*    />*/}
+                {/*</Chart>*/}
                 <CrossHairCursor />
             </ChartCanvas>
         );
